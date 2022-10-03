@@ -1,0 +1,25 @@
+export PS1='\[\e[0;38;5;197m\]\u\[\e[0m\]@\[\e[0;38;5;202m\]\H\[\e[0m\]:\[\e[0;38;5;118m\]\w \[\e[0m\][\[\e[0m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0m\]]\n\[\e[0m\]\$ \[\e[0m\]'
+
+shell () {
+    prev_command=$(fc -ln -1)
+    eval $prev_command 2>&1 | sed -nr 's/  nix-shell -p (.*)/\1/p' | head -n 1 | xargs -o -I% nix-shell -p %
+}
+
+function zat() {
+	zathura "$1" &> /dev/null &
+	disown
+}
+
+# Copy paste from https://transfer.sh/
+transfer(){ if [ $# -eq 0 ];then echo "No arguments specified.\nUsage:\n transfer <file|directory>\n ... | transfer <file_name>">&2;return 1;fi;if tty -s;then file="$1";file_name=$(basename "$file");if [ ! -e "$file" ];then echo "$file: No such file or directory">&2;return 1;fi;if [ -d "$file" ];then file_name="$file_name.zip" ,;(cd "$file"&&zip -r -q - .)|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null,;else cat "$file"|curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file "-" "https://transfer.sh/$file_name"|tee /dev/null;fi;}
+
+function trc() {
+    transfer "$1" | wl-copy
+}
+
+SEMHOME="/home/mads/reps/SDU/5_semester"
+
+alias algp="cd $SEMHOME/algorithms_and_probability"
+alias sof="cd $SEMHOME/software_engineering"
+alias flan="cd $SEMHOME/formal_languages"
+
