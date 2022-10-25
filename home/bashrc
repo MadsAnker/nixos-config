@@ -22,4 +22,5 @@ SEMHOME="/home/mads/reps/SDU/5_semester"
 alias algp="cd $SEMHOME/algorithms_and_probability"
 alias sof="cd $SEMHOME/software_engineering"
 alias flan="cd $SEMHOME/formal_languages"
+alias inst="cd ~/reps/SDU/instruktor/intro_til_dat"
 

@@ -1,9 +1,14 @@
 { lib, ...}:
 
 {
-  wayland.windowManager.sway = {
+  wayland.windowManager.sway = 
+  let 
+    extraConfig = (builtins.readFile ./config);
+  in
+  {
     enable = true;
     wrapperFeatures.gtk = true;
+    extraConfig = extraConfig;
 
       # Not sure what all of these are for, but i have had issues with the _JAVA one before
       extraSessionCommands = ''
@@ -55,6 +60,7 @@
           "${modkey}+Shift+l" = "exec swaylock -f -c 000000";
           "${modkey}+x" = "exec ${browser}";
           "${modkey}+Shift+x" = "exec mkdir -p ~/screenshots && grim -t jpeg -g \"$(slurp)\" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg";
+          "${modkey}+Shift+p" = "exec systemctl suspend";
           "F6" = "exec light -A 5";
           "F5" = "exec light -U 5";
         };

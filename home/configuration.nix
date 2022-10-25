@@ -15,7 +15,7 @@
     programs.home-manager.enable = true;
 
     imports = [
-      ./sway.nix
+      ./sway/sway.nix
       ./vim/vim.nix
       ./alacritty.nix
       ./waybar.nix
@@ -57,6 +57,8 @@
       nodejs # Required for coc.nvim to work
       rnix-lsp # Nix language server
       wl-clipboard # Used to interact with the wayland clipboard
+      xdg-utils #xdg-open is used by many programs
+      delta # better diffs with git
     ];
 
     nixpkgs.config.allowUnfree = true;

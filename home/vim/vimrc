@@ -37,7 +37,8 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 " Tell vimtex to use zathura
 let g:vimtex_view_method = 'zathura'
-" Copy paste from :h vimtex with only build_dir changes
+let g:vimtex_view_general_viwer = 'zathura'
+" Copy paste from :h vimtex with only build_dir changed
 let g:vimtex_compiler_latexmk = {
         \ 'build_dir' : 'build',
         \ 'callback' : 1,
