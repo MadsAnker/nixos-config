@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
   programs.waybar = {
@@ -7,18 +7,32 @@
       mainBar = {
         layer = "top";
         height = 30;
-        modules = {
-          "network" = {
-            "format-wifi" = "{essid}";
-            "format-disconnected" = "not connected";
-          };
-          "clock" = {
-            "format" = "{:%H:%M}";
-          };
-        };
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-right = [ "network" "backlight" "pulseaudio" "battery" "clock" ];
+        "network" = {
+          "format-wifi" = "{essid} {ipaddr}/{cidr}";
+          "format-disconnected" = "not connected";
+          };
+          "clock" = {
+          "format" = "{:%H:%M (%V)}";
+          };
+          "battery" = {
+          "states" = {
+          "warning" = 30;
+          "critical" = 10;
+          };
+          "format" = "{capacity}% {icon} ";
+          "format-icons" = ["" "" "" "" ""];
+          };
+
+          "pulseaudio" = {
+            "format" = "{volume}% {icon}";
+            "format-icons" = {
+              "default" = ["" "" ""];
+            };
+            "on-click" = "pavucontrol";
+          };
+        };
       };
     };
-  };
-}
+ }

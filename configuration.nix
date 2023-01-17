@@ -41,14 +41,12 @@
     enableDefaultFonts = true;
     fonts = with pkgs; [ 
       inconsolata 
-      nerdfonts 
       liberation_ttf
+      (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
     ];
     fontconfig = {
       defaultFonts = {
-        serif = [ "Liberation Serif" "Regular" ];
-        sansSerif = [ "Liberation Sans" "Regular" ];
-        monospace = [ "Inconsolata" "Regular" ];
+        monospace = [ "DroidSansMono Nerd Font Mono" "Book" ];
       };
     };
   };
@@ -70,6 +68,8 @@
     xkbVariant = "nodeadkeys";
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   # Configure console keymap
   console.keyMap = "dk-latin1";
 
@@ -77,7 +77,7 @@
   users.users.mads = {
     isNormalUser = true;
     description = "Mads Anker Nielsen";
-    extraGroups = [ "networkmanager" "wheel" "users-with-access-to-virtualbox" "audio" "docker" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "users-with-access-to-virtualbox" "audio" "docker" "video" "wireshark" ];
     packages = with pkgs; [];
   };
 
@@ -94,6 +94,7 @@
     btop
     curl
     git
+    zip
     unzip
     gcc
     xwayland
@@ -101,6 +102,8 @@
     nmap
     man-pages
     busybox
+    nix-index
+    findutils
   ];
 
   systemd.services.NetworkManager-wait-online.enable = false;

@@ -23,4 +23,7 @@ alias algp="cd $SEMHOME/algorithms_and_probability"
 alias sof="cd $SEMHOME/software_engineering"
 alias flan="cd $SEMHOME/formal_languages"
 alias inst="cd ~/reps/SDU/instruktor/intro_til_dat"
-
+alias pyvenv="python -m venv venv && venv/bin/pip install jedi pylint && source venv/bin/activate"
+alias avenv="source venv/bin/activate"
+alias lvim="docker compose -f ~/lvimdocker/docker-compose.yml run lvim lvim"
+alias ipy="ipython"
