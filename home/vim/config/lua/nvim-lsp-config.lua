@@ -14,8 +14,13 @@ lspconfig.sumneko_lua.setup({})
 lspconfig.pylsp.setup({})
 lspconfig.rnix.setup({})
 lspconfig.hls.setup({})
+lspconfig.java_language_server.setup({})
+lspconfig.tsserver.setup({})
 
 local lsp = vim.lsp
 
 vim.keymap.set("n", "<space>lf", lsp.buf.format, { desc = "Format" })
 vim.keymap.set("n", "<space>lr", lsp.buf.rename, { desc = "Rename symbol" })
+vim.keymap.set("n", "<space>lk", vim.diagnostic.goto_next, { desc = "Prev diagnostic" })
+vim.keymap.set("n", "<space>lj", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+vim.keymap.set("n", "<space>d", function () vim.diagnostic.open_float({focus=false}) end, { desc = "Show diagnostics under cursor" })

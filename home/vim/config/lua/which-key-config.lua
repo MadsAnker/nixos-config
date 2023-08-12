@@ -13,5 +13,7 @@ wk.setup({
 wk.register({
     s = { name = "Search" },
     l = { name = "LSP" },
-    t = { name = "LaTeX" }
+    t = { name = "LaTeX" },
+    h = { name = "No highlight", silent = true, cmd = ":noh<CR>" },
+    n = { name = "Snippets" }
 }, { prefix = "<space>" })

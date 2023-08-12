@@ -4,8 +4,7 @@
 
 
   home-manager.users.mads = { pkgs, ... }: {
-    programs.bash = let
-      bashrc = builtins.readFile ./bashrc;
+    programs.bash = let bashrc = builtins.readFile ./bashrc;
     in
     {
       enable = true;
@@ -28,15 +27,9 @@
     home.packages = let
       pyenv = pyPkgs: with pyPkgs; [
         ipython
-        jedi
         pycryptodome
-        pylint
-        python-lsp-server
-        pyflakes
-        rope
       ];
       openconnect-sso = (import "${builtins.fetchTarball https://github.com/vlaci/openconnect-sso/archive/master.tar.gz}/nix" {}).openconnect-sso;
-      myHaskell = pkgs.haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [stack haskell-language-server]);
     in with pkgs; [
       swaylock # Locking
       swayidle # Trigger actions on idle
@@ -61,28 +54,28 @@
       slurp # For selecting regions (used with grim for screenshots)
       grim # For taking screenshots
       nodejs-16_x
-      rnix-lsp # Nix language server
       wl-clipboard # Used to interact with the wayland clipboard
       xdg-utils #xdg-open is used by many programs
       delta # better diffs with git
       vscode
       # gnome.gnome-keyring
       wireshark
+
       # So this was a bit of a pain to get working
       # SSO was not working. 
-      # Running my browser (chromium based) with strace showed that a call to xdg-open was being made but failed to find a handler.
-      # In serach for a solution i found https://superuser.com/questions/162092/how-can-i-register-a-custom-protocol-with-xdg.
-      # So i looked for the termius-app .desktop file (find -L . -name '*.desktop') and found termius-app.desktop in ~/.nix-profile/opt/termius/meta/gui/termius-app.desktop.
+      # Running my browser (chromium based) with strace showed that a call 
+      # to xdg-open was being made but failed to find a handler.
+      # In serach for a solution i found 
+      # https://superuser.com/questions/162092/how-can-i-register-a-custom-protocol-with-xdg.
+      # So i looked for the termius-app .desktop file (find -L . -name '*.desktop') 
+      # and found termius-app.desktop in ~/.nix-profile/opt/termius/meta/gui/termius-app.desktop.
       # Adding the following to ~/.local/share/applications/mimeapps.list fixed the issue:
       #[Default Applications]
       #x-scheme-handler/termius=termius-app.desktop
       termius
-      myHaskell
-
-      # Language servers
-      sumneko-lua-language-server
-
-      ripgrep
+      ghc
+      networkmanagerapplet
+      obsidian
     ];
 
     nixpkgs.config.allowUnfree = true;

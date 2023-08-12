@@ -17,13 +17,16 @@ function trc() {
     transfer "$1" | wl-copy
 }
 
-SEMHOME="/home/mads/reps/SDU/5_semester"
+SEMHOME="/home/mads/reps/SDU/6_semester"
 
-alias algp="cd $SEMHOME/algorithms_and_probability"
-alias sof="cd $SEMHOME/software_engineering"
-alias flan="cd $SEMHOME/formal_languages"
-alias inst="cd ~/reps/SDU/instruktor/intro_til_dat"
-alias pyvenv="python -m venv venv && venv/bin/pip install jedi pylint && source venv/bin/activate"
+alias inst="cd ~/reps/SDU/instruktor/operating_systems"
+alias logi="cd $SEMHOME/logic"
+alias bach="cd $SEMHOME/bachelor"
+alias ccom="cd $SEMHOME/complexity_and_computability"
+alias pyvenv="python -m venv venv && source venv/bin/activate"
 alias avenv="source venv/bin/activate"
 alias lvim="docker compose -f ~/lvimdocker/docker-compose.yml run lvim lvim"
 alias ipy="ipython"
+alias nx="cd /etc/nixos"
+alias nrb="sudo nixos-rebuild switch"
+alias ddc="cd ~/KaliSharedFolder/natiddc"

@@ -14,7 +14,8 @@
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  services.localtimed.enable = true;
+  
   hardware = {
     opengl = {
       enable = true;
@@ -104,6 +105,8 @@
     busybox
     nix-index
     findutils
+    #my_networkmanager-openconnect
+    openconnect
   ];
 
   systemd.services.NetworkManager-wait-online.enable = false;

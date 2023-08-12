@@ -19,7 +19,7 @@ hi LineNr guibg=NONE ctermbg=NONE
 vim.opt.clipboard = "unnamedplus"
 
 
-require("luasnip").setup({})
+require("luasnip-config")
 require("nvim-cmp-config")
 require("telescope-config")
 require("which-key-config")
@@ -30,5 +30,19 @@ require("nvim-tree-config")
 require("lualine-config")
 require("nvim-lsp-config")
 require("vimtex-config")
+require('gitsigns').setup()
+require("treesitter-config")
 
 vim.api.nvim_set_keymap('i', '<C-a>', 'copilot#Accept("")', {expr=true, silent=true})
+
+-- Disable copilot on startup
+vim.cmd([[
+let g:copilot_filetypes = {
+    \ '*': v:false
+    \ }
+]])
+
+vim.cmd([[
+let g:vimtex_syntax_enabled = 1
+]])
+

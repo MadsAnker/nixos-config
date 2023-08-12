@@ -45,7 +45,7 @@
               natural_scroll = "enabled";
             };
           };
-          window.border = 0;
+          window.border = 1;
 
           output = {
             "*" = {
@@ -62,7 +62,7 @@
             "${modkey}+Shift+l" = "exec swaylock -f -c 000000";
             "${modkey}+x" = "exec ${browser}";
             "${modkey}+Shift+x" = "exec mkdir -p ~/screenshots && grim -t jpeg -g \"$(slurp)\" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg";
-            "${modkey}+Shift+p" = "exec systemctl suspend";
+            "${modkey}+Shift+p" = "exec swaylock -f -c 000000 && systemctl suspend";
             "F6" = "exec light -A 5";
             "F5" = "exec light -U 5";
           };

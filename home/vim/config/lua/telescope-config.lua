@@ -2,6 +2,7 @@ local ts = require("telescope")
 local builtin = require("telescope.builtin")
 
 ts.setup({});
+require("telescope").load_extension("ui-select")
 
 vim.keymap.set("n", "<space>f", builtin.find_files, { desc = "Find file" })
 vim.keymap.set("n", "<space>sg", builtin.live_grep, { desc = "Live grep" })

@@ -12,6 +12,7 @@
         "network" = {
           "format-wifi" = "{essid} {ipaddr}/{cidr}";
           "format-disconnected" = "not connected";
+          "on-click" = "exec nm-applet --indicator";
           };
           "clock" = {
           "format" = "{:%H:%M (%V)}";

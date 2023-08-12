@@ -8,7 +8,7 @@ tree.setup({
 		update_root = true
 	},
     view = {
-        width = 50,
+        width = 40,
         preserve_window_proportions = true
     },
     renderer = {
